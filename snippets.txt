@@ -94,3 +94,29 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview,Fi
 />
 
 
+function convertMinutesToHours($minutes) {
+    $hours = floor($minutes / 60);
+    $remainingMinutes = $minutes % 60;
+
+    if ($hours > 0) {
+        $hString = ($hours == 1) ? "hr" : "hrs";
+        $mString = ($remainingMinutes == 1) ? "min" : "mins";
+
+        if ($hours > 0) {
+            if ($remainingMinutes > 0) {
+                return "{$hours} {$hString} {$remainingMinutes} {$mString}";
+            } else {
+                return "{$hours} {$hString}";
+            }
+        }
+
+    } else {
+        if ($remainingMinutes > 0) {
+            $mString = ($remainingMinutes == 1) ? "min" : "mins";
+            return "{$remainingMinutes} {$mString}";
+        }
+        
+    }
+    
+}
+
