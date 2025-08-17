@@ -93,7 +93,7 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview,Fi
     labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
 />
 
-
+/******************* PHP *********************************/
 function convertMinutesToHours($minutes) {
     $hours = floor($minutes / 60);
     $remainingMinutes = $minutes % 60;
@@ -118,5 +118,29 @@ function convertMinutesToHours($minutes) {
         
     }
     
+}
+
+/******************* JS *********************************/
+export function convertMinutesToHours(minutes) {
+    let hours = Math.floor(minutes / 60);
+    let remainingMinutes = minutes % 60;
+
+    if (hours > 0) {
+        let hString = hours === 1 ? "hr" : "hrs";
+        let mString = remainingMinutes === 1 ? "min" : "mins";
+
+        if (remainingMinutes > 0) {
+            return `${hours} ${hString} ${remainingMinutes} ${mString}`;
+        } else {
+            return `${hours} ${hString}`;
+        }
+    } else {
+        if (remainingMinutes > 0) {
+            let mString = remainingMinutes === 1 ? "min" : "mins";
+            return `${remainingMinutes} ${mString}`;
+        }
+    }
+
+    return "0 min";
 }
 
